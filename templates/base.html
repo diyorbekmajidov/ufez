@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="UFEZ, Farg'ona, iqtisodiy zona">
+    <meta name="description" content="UFEZ rasmiy veb-sayti">
+    <meta name="author" content="">
+
+    <title>{% block title %}UFEZ{% endblock %}</title>
+
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,400,500,600,700" rel="stylesheet">
+
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- Loading Animation -->
+    <div class="loading">
+        <div class="load-circle"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="logo" href="#">
+                <img src="{% static 'img/logo-light.png' %}" alt="logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"><i class="fas fa-bars"></i></span>
+            </button>
+
+            <ul class="main-menu__list">
+                {% for item in menu_items %}
+                    <li class="{% if item.has_children %}dropdown{% endif %}">
+                        <a href="{{ item.get_url }}">{{ item.title }}</a>
+                        {% if item.has_children %}
+                            <ul>
+                                {% for child in item.cheldirn.all %}
+                                    {% if child.is_active %}
+                                        <li><a href="{{ child.get_url }}">{{ child.title }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+            <ul class="header-icon">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="info mb-md50">
+                        <h3>Biz haqimizda</h3>
+                        <p>Biz Farg'ona erkin iqtisodiy zonamiz – sarmoya va innovatsiya markazi.</p>
+                        <div class="social">
+                            <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="mb-md50">
+                        <h3>Foydali havolalar</h3>
+                        <ul class="footer-widget-list">
+                            <li><a href="#">Investitsiyalar</a></li>
+                            <li><a href="#">Hududlar</a></li>
+                            <li><a href="#">Tadbirlar</a></li>
+                            <li><a href="#">Yangiliklar</a></li>
+                            <li><a href="#">Bog'lanish</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="las-post mb-md50">
+                        <h3>So'nggi yangiliklar</h3>
+                        <ul>
+                            <li><a href="#">Yangi investitsiya loyihasi boshlandi</a><span>1 avgust, 2025</span></li>
+                            <li><a href="#">Eksport hajmi oshdi</a><span>27 iyul, 2025</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="contact-info">
+                        <h3>Aloqa</h3>
+                        <ul>
+                            <li>Farg'ona sh., Mustaqillik ko'chasi 45</li>
+                            <li>+998 (73) 123-45-67</li>
+                            <li>info@ufez.uz</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>&copy; 2025 UFEZ. Barcha huquqlar himoyalangan.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="foot-links">
+                            <li><a href="#">Bosh sahifa</a></li>
+                            <li><a href="#">Maxfiylik siyosati</a></li>
+                            <li><a href="#">Shartlar</a></li>
+                            <li><a href="#">Aloqa</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/validator.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>
