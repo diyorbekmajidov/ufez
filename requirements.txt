@@ -1,6 +1,7 @@
 django
 djangorestframework
 django-cors-headers
+django-modeltranslation
 django-ckeditor
 Pillow
 requests

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,6 +119,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('uz',  gettext('Uzbek')),
+    ('ru',  gettext('Russian')),
+    ('en',  gettext('English')),
+    
+)
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 
 
 # Static files (CSS, JavaScript, Images)

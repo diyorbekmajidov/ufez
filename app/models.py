@@ -1,5 +1,14 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.core.exceptions import ValidationError
+
+def validate_file_size(value):
+    filesize = value.size
+
+    if filesize > 1000 * 2024:
+        raise ValidationError("The maximum file size that can be uploaded is 2mb")
+    else:
+        return value
 
 class Menu(models.Model):
     title = models.CharField(max_length=200)
@@ -63,7 +72,7 @@ class News(models.Model):
     title = models.CharField("Yangilik sarlavhasi", max_length=200)
     slug = models.SlugField("Slug (URL uchun)", unique=True)
     body = RichTextField("Matn")
-    image = models.ImageField("Rasm", upload_to='news/')
+    image = models.ImageField("Rasm", upload_to='news/', validators=[validate_file_size])
     created_at = models.DateTimeField("Yaratilgan vaqt", auto_now_add=True)
 
     date_created = models.DateTimeField(auto_now_add=True)
