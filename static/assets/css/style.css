@@ -40,7 +40,53 @@
 
 
 /* 1. Theme default css
+
 -------------------------------------------------------------- */
+
+/* Menu additional styles */
+.side-mobile-menu-active {
+    right: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.body-overlay-active {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.mobile-menu-visible {
+    overflow: hidden !important;
+}
+
+/* Language selector mobile responsive */
+@media (max-width: 768px) {
+    .language-selector {
+        margin-left: 10px;
+    }
+    
+    .header-lang-bx {
+        padding: 6px 12px;
+        font-size: 13px;
+        min-width: 60px;
+    }
+}
+
+/* Menu loading animation */
+.main-menu__list > li > ul {
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 

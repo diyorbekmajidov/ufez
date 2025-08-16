@@ -1,0 +1,12 @@
+<li class="{% if item.has_children %}dropdown{% endif %}">
+    <a href="{{ item.get_url }}">{{ item.title }}</a>
+    {% if item.has_children %}
+        <ul>
+            {% for child in item.children.all %}
+                {% if child.is_active %}
+                    {% include "partials/menu_item.html" with item=child %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

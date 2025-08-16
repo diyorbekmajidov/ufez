@@ -25,9 +25,202 @@
         <link rel="stylesheet" href="{% static 'assets/css/default.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+        
+        <!-- Custom Menu Styles -->
+        <style>
+            /* Menu Enhanced Styles */
+            .main-menu__list {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                list-style: none !important;
+                gap: 35px !important;
+            }
+            
+            .main-menu__list > li {
+                position: relative !important;
+                margin: 0 !important;
+            }
+            
+            .main-menu__list > li > a {
+                color: #333 !important;
+                font-weight: 500 !important;
+                font-size: 16px !important;
+                text-decoration: none !important;
+                padding: 20px 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                transition: all 0.3s ease !important;
+                position: relative !important;
+            }
+            
+            .main-menu__list > li > a:hover {
+                color: #007bff !important;
+            }
+            
+            /* Dropdown indicator */
+            .main-menu__list > li.dropdown > a::after {
+                content: '' !important;
+                width: 0 !important;
+                height: 0 !important;
+                border-left: 4px solid transparent !important;
+                border-right: 4px solid transparent !important;
+                border-top: 4px solid currentColor !important;
+                margin-left: 8px !important;
+                transition: transform 0.3s ease !important;
+            }
+            
+            .main-menu__list > li.dropdown:hover > a::after {
+                transform: rotate(180deg) !important;
+            }
+            
+            /* Dropdown menu */
+            .main-menu__list > li > ul {
+                position: absolute !important;
+                top: 100% !important;
+                left: 50% !important;
+                transform: translateX(-50%) translateY(20px) !important;
+                background: #fff !important;
+                min-width: 220px !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all 0.3s ease !important;
+                border-radius: 8px !important;
+                overflow: hidden !important;
+                border: 1px solid #eee !important;
+                z-index: 999 !important;
+                list-style: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .main-menu__list > li:hover > ul {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateX(-50%) translateY(0) !important;
+            }
+            
+            .main-menu__list > li > ul > li {
+                width: 100% !important;
+                border-bottom: 1px solid #f0f0f0 !important;
+                margin: 0 !important;
+            }
+            
+            .main-menu__list > li > ul > li:last-child {
+                border-bottom: none !important;
+            }
+            
+            .main-menu__list > li > ul > li > a {
+                padding: 12px 20px !important;
+                color: #666 !important;
+                font-size: 14px !important;
+                display: block !important;
+                transition: all 0.3s ease !important;
+                text-decoration: none !important;
+                font-weight: 400 !important;
+            }
+            
+            .main-menu__list > li > ul > li > a:hover {
+                background: #f8f9fa !important;
+                color: #007bff !important;
+                padding-left: 25px !important;
+            }
+            
+            /* Active menu item */
+            .main-menu__list > li.active > a {
+                color: #007bff !important;
+                position: relative !important;
+            }
+            
+            .main-menu__list > li.active > a::before,
+            .main-menu__list > li:hover > a::before {
+                content: '' !important;
+                position: absolute !important;
+                bottom: 0 !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 30px !important;
+                height: 3px !important;
+                background: #007bff !important;
+                border-radius: 2px !important;
+                transition: transform 0.3s ease !important;
+            }
+            
+            /* Language selector styles */
+            .language-selector {
+                margin-left: 20px;
+            }
+            
+            .header-lang-bx {
+                border: 2px solid #ddd;
+                padding: 8px 15px;
+                border-radius: 25px;
+                background: #fff;
+                color: #333;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-width: 70px;
+                text-align: center;
+            }
+            
+            .header-lang-bx:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+            }
+            
+            /* Mobile menu button */
+            .mobile-menu-toggle {
+                display: none;
+                background: none;
+                border: none;
+                font-size: 24px;
+                color: #333;
+                padding: 10px;
+                cursor: pointer;
+            }
+            
+            @media (max-width: 991px) {
+                .main-menu {
+                    display: none !important;
+                }
+                
+                .mobile-menu-toggle {
+                    display: block !important;
+                }
+            }
+            
+            /* Header sticky effect */
+            .header-area.scrolled {
+                background: rgba(255,255,255,0.95) !important;
+                backdrop-filter: blur(10px) !important;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.15) !important;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 1199px) {
+                .main-menu__list {
+                    gap: 25px !important;
+                }
+                
+                .main-menu__list > li > a {
+                    font-size: 15px !important;
+                }
+            }
+            
+            @media (max-width: 1024px) {
+                .main-menu__list {
+                    gap: 20px !important;
+                }
+            }
+        </style>
     </head>
     <body>
-        
         
         <!--  ====== preloader=============================================  -->
         <div id="preloader">
@@ -48,194 +241,68 @@
                 <div class="header">
                     <div class="container">
                         <div class="row align-items-center justify-content-between position-relative">
+                            <!-- Logo Section -->
                             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-5 col-6">
                                 <div class="logo">
-                                    <a href="index.html" class="d-block"><img src="{% static 'assets/images/logo/logo.jpg' %}" alt="Evalo"></a>
+                                    <a href="{% url 'home' %}" class="d-block">
+                                        <img src="{% static 'assets/images/logo/logo.jpg' %}" alt="UFEZ Logo">
+                                    </a>
                                 </div>
                             </div><!-- /col -->
-                            <div class="col-xl-7 col-lg-7 col-md-1 col-sm-1 col-1 d-none d-lg-flex justify-content-end position-static">
+                            
+                            <!-- Main Menu Section -->
+                            <div class="col-xl-7 col-lg-7 col-md-1 col-sm-1 col-1 d-none d-lg-flex justify-content-center position-static">
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
-                                        <ul class="d-block">
-                                            <li class="full-mega-menu-position"><a class="active" href="index.html">Home</a>
-                                                <ul class="mega-menu full-mega-menu full-mega-menu1 pt-35 pb-10 pl-30 pr-0 theme-bg">
-                                                    <li class="pl-05 pr-05  pb-20">
-                                                        <a href="index.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img1.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Saas 1</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index2-sass.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img2.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Saas 2</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index3-digital-agency.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img3.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Digital Agency</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index4-startup.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img4.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Startup</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index5-app-landing-page.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img5.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">App Landing Page</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index6-agency.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img6.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Agency 2</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index7-portfolio-minimal.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img5.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Minimal portfolio</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="pl-05 pr-05 pb-20">
-                                                        <a href="index8-portfolio.html">
-                                                            <img class="w100" src="images/menu/mega-menu-img1.jpg" alt="image">
-                                                            <span class="d-block black text-md-center f-700 mt-10">Portfolio</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about-us.html">About</a></li>
-                                            <li><a href="service.html">Service</a>
-                                                <ul class="mega-menu mega-dropdown-menu white-bg ml-0">
-                                                    <li><a href="service.html">Service</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="full-mega-menu-position"><a href="#">pages</a>
-                                                <ul class="mega-menu full-mega-menu full-mega-menu2 d-lg-flex white-bg pl-35 pt-30 pr-25 pb-20">
-                                                    <li>
-                                                        <a class="mega-title mb-15" href="#">Home</a>
- 
-                                                        <ul>
-                                                            <li><a href="index.html">Saas</a></li>
-                                                            <li><a href="index2-sass.html">Saas 2</a></li>
-                                                            <li><a href="index3-digital-agency.html">Digital Agency 1</a></li>
-                                                            <li><a href="index4-startup.html">Startup</a></li>
-                                                            <li><a href="index5-app-landing-page.html">App Landing</a></li>
-                                                            <li><a href="index6-agency.html">Digital Agency 2</a></li>
-                                                            <li><a href="index7-portfolio-minimal.html">Minimal Portfolio</a></li>
-                                                            <li><a href="index8-portfolio.html">Portfolio</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="mega-title mb-15" href="#">Pages</a>
-                                                        <ul>
-                                                            <li><a href="about-us.html">About us</a></li>
-                                                            <li><a href="service.html">Service</a></li>
-                                                            <li><a href="blog-details.html">Service</a></li>
-                                                            <li><a href="team.html">Team</a></li>
-                                                            <li><a href="contact-us.html">Contact us</a></li>
-                                                            <li><a href="faq.html">Faq page</a></li>
-                                                            <li><a href="404-error.html">404-error</a></li>
-                                                            <li><a href="login.html">Login</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="mega-title mb-15" href="#">Blog</a>
-                                                        <ul>
-                                                            <li><a href="blog.html">Main Blog Page</a></li>
-                                                            <li><a href="blog2.html">Blog Page v2</a></li>
-                                                            <li><a href="blog3.html">Blog Page v3</a></li>
-                                                            <li><a href="blog-details.html">Blog details 1</a></li>
-                                                            <li><a href="blog-details2.html">Blog details 2</a></li>
-                                                            <li><a href="blog-details3.html">blog-details 3</a></li>
-                                                            <li><a href="blog-details-gallery.html">Blog details gallery</a></li>
-                                                            <li><a href="blog-details-quote.html">Blog details quote</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="mega-title mb-25" href="#">Recent Blog</a>
-                                                        <ul>
-                                                            <li>
-                                                                <div class="recent-blog-menu d-flex justify-content-between pb-22">
-                                                                    <div class="rbm-img pr-15">
-                                                                        <a href="blog-details.html" class="d-inline-block">
-                                                                            <img class="w-100 h-100" src="images/menu/blog-menu-img1.jpg" alt="image">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="rbm-text">
-                                                                        <a href="blog-details.html" class="d-block">
-                                                                            <h6 class="mt--5">Lorem ipsum doloram etceio nse</h6>
-                                                                        </a>
-                                                                        <span class="d-block secondary-color2">Sept 28, 2020</span>
-                                                                    </div>
-                                                                </div><!-- /recent-blog-menu -->
-                                                                <div class="recent-blog-menu d-flex justify-content-between">
-                                                                    <div class="rbm-img pr-15">
-                                                                        <a href="blog-details.html" class="d-inline-block">
-                                                                            <img class="w-100 h-100" src="images/menu/blog-menu-img1.jpg" alt="image">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="rbm-text">
-                                                                        <a href="blog-details.html" class="d-inline-block">
-                                                                            <h6 class="mt--4">Lorem ipsum doloram etceio nse</h6>
-                                                                        </a>
-                                                                        <span class="d-block secondary-color2">Sept 28, 2020</span>
-                                                                    </div>
-                                                                </div><!-- /recent-blog-menu -->
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul><!-- /mega-menu 2 -->
-                                            </li>
-                                            <li><a href="blog.html">blog</a>
-                                                <ul class="mega-menu mega-dropdown-menu white-bg ml-0">
-                                                    <li><a href="blog.html">Blog v1</a></li>
-                                                    <li><a href="blog2.html">Blog v2</a></li>
-                                                    <li><a href="blog3.html">Blog v3</a></li>
-                                                    <li><a href="blog4.html">Blog v4</a></li>
-                                                    <li><a href="blog5.html">Blog v5</a></li>
-                                                    <li><a href="blog6.html">Blog v6</a></li>
-                                                    <li class="position-relative">
-                                                        <a href="#">Blog details <span class="pr-20 float-right"><i class="fas fa-angle-right"></i></span></a>
-                                                        <div class="mega-menu mega-sub-menu bg-white">
+                                        <ul class="main-menu__list">
+                                            {% for item in menu_items %}
+                                                {% if item.is_active %}
+                                                    <li class="{% if item.has_children %}dropdown{% endif %} {% if item.title == current_menu %}active{% endif %}">
+                                                        <a href="{{ item.get_url }}">{{ item.title }}</a>
+                                                        {% if item.has_children %}
                                                             <ul>
-                                                                <li><a href="blog-details.html">Blog details 1</a></li>
-                                                                <li><a href="blog-details2.html">Blog details 2</a></li>
-                                                                <li><a href="blog-details3.html">blog-details 3</a></li>
-                                                                <li><a href="blog-details-gallery.html">Blog details gallery</a></li>
-                                                                <li><a href="blog-details-quote.html">Blog details quote</a></li>
+                                                                {% for child in item.children.all %}
+                                                                    {% if child.is_active %}
+                                                                        <li>
+                                                                            <a href="{{ child.get_url }}">{{ child.title }}</a>
+                                                                        </li>
+                                                                    {% endif %}
+                                                                {% endfor %}
                                                             </ul>
-                                                        </div><!-- /mega-sub-menu -->
+                                                        {% endif %}
                                                     </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact-us.html">Contact</a>
-                                            </li>
-                                         </ul>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
                                     </nav>
                                 </div><!-- /main-menu -->
                             </div><!-- /col -->
-                            <div class="col-xl-3  col-lg-3 col-md-6 col-sm-6 col-4 pl-lg-0 pl-xl-3">
+                            
+                            <!-- Header Right Section -->
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-4 pl-lg-0 pl-xl-3">
                                 <div class="header-right d-flex align-items-center justify-content-lg-between justify-content-end">
-                                    <ul class="header-login d-none d-lg-block">
-                                        <li>
-                                            <a class="black-color f-700 black-color" href="login.html" data-toggle="tooltip" data-selector="true" data-placement="bottom" title="Login / Register">
-                                            Login</a>
-                                        </li>
-                                    </ul>
-                                    <div class="my-btn ml-20 d-none d-sm-block">
-                                        <a href="login.html" class="btn theme-bg text-capitalize">Sign Up</a>
-                                    </div><!-- /my-btn -->
-                                    <div class="d-block d-lg-none pl-20">
-                                        <a class="mobile-menubar theme-color" href="javascript:void(0);"><i class="far fa-bars"></i></a>
+                                    <!-- Language Selector -->
+                                    <div class="language-selector">
+                                        <form action="{% url 'set_language' %}" method="post" id="language-form">
+                                            {% csrf_token %}
+                                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                            <select name="language" class="header-lang-bx" onchange="this.form.submit()">
+                                                {% get_available_languages as LANGUAGES %}
+                                                {% get_language_info_list for LANGUAGES as languages %}
+                                                {% for language in languages %}
+                                                    <option value="{{ language.code }}" 
+                                                            {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                                                        {{ language.code|upper }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        </form>
                                     </div>
-                                    <!-- <div class="mobile-menu"></div> -->
+                                    
+                                    <!-- Mobile Menu Toggle -->
+                                    <button class="mobile-menu-toggle d-lg-none ms-3" onclick="toggleMobileMenu()">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
                                 </div><!-- /header-right -->
                             </div><!-- /col -->
                         </div><!-- /row -->
@@ -245,7 +312,6 @@
         </header>
         <!--  header-area-end  -->
 
-
         <!--  ====== header extra info start================================== -->
         <!-- side-mobile-menu start -->
         <div class="side-mobile-menu white-bg pt-10 pb-30 pl-35 pr-30 pb-100">
@@ -254,34 +320,57 @@
                     <a href="javascript:void(0);"><span class="icon-clear theme-color"><i class="fa fa-times"></i></span></a>
                 </div>
             </div>
-            <div class="mobile-menu mt-10 w-100"></div>
+            <div class="mobile-menu mt-10 w-100">
+                <!-- Mobile Menu Items -->
+                <nav>
+                    <ul>
+                        {% for item in menu_items %}
+                            {% if item.is_active %}
+                                <li>
+                                    <a href="{{ item.get_url }}">{{ item.title }}</a>
+                                    {% if item.has_children %}
+                                        <ul>
+                                            {% for child in item.children.all %}
+                                                {% if child.is_active %}
+                                                    <li><a href="{{ child.get_url }}">{{ child.title }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            
             <ul class="social-link pt-50 clear-both">
                 <li class="d-inline-block">
-                    <a class="facebook-color text-center pr-15 d-inline-block transition-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="facebook-color text-center pr-15 d-inline-block transition-3" href="https://www.facebook.com/uzbekistan24tv/?rdid=3wletXz8BVwr3x3Z"><i class="fab fa-facebook-f"></i></a>
                 </li>
                 <li class="d-inline-block">
-                    <a class="twitter-color text-center pr-15 d-inline-block transition-3" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="twitter-color text-center pr-15 d-inline-block transition-3" href="https://t.me/ufez_uz"><i class="fab fa-telegram"></i></a>
                 </li>
                 <li class="d-inline-block">
-                    <a class="google-plus-color text-center pr-15 d-inline-block transition-3" href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a class="youtube-color text-center pr-15 d-inline-block transition-3" href="#"><i class="fab fa-youtube"></i></a>
                 </li>
                 <li class="d-inline-block">
-                    <a class="linked-in-color text-center d-inline-block transition-3" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="instagram-color text-center d-inline-block transition-3" href="https://www.instagram.com/fezurgut/#"><i class="fab fa-instagram"></i></a>
                 </li>
             </ul><!-- social-link -->
 
             <!-- mobile phone area -->
             <div class="mobile-phone-contact phone-contact mt-150 mb-25">
-                <h6 class="f-700 mb-0">Call Us</h6>
-                <a class="theme-color f-700" href="tell:+8801234567890">+8801234567890</a>
+                <h6 class="f-700 mb-0">Biz bilan bog'laning</h6>
+                <a class="theme-color f-700" href="tel:+998664831108">+998 66 483 11 08</a>
             </div><!-- /mobile phone area -->
             
             <!-- mobile subscribe area -->
             <div class="mobile-subscribe pb-125">
-                <h6 class="f-700 mb-1">Subscribe to Our Newsletter</h6>
+                <h6 class="f-700 mb-1">Yangiliklarni obuna bo'ling</h6>
                 <form action="#">
                     <div class="subscribe-info mt-10 position-relative">
-                        <input class="sub-name form-control border-0 pl-20 pt-15 pb-15 pr-10 primary-bg secondary-color rounded-0" type="email" name="email" id="m-email" placeholder="Submit email">
+                        <input class="sub-name form-control border-0 pl-20 pt-15 pb-15 pr-10 primary-bg secondary-color rounded-0" type="email" name="email" id="m-email" placeholder="Email manzil">
                         <span class="secondary-color d-inline-block position-absolute pointer"><i class="far fa-envelope"></i></span>
                     </div>
                 </form>
@@ -303,66 +392,66 @@
                 <div class="footer-top pb-55">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-3  col-lg-4  col-md-12  col-sm-12 col-12">
+                            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
                                 <div class="footer-widget f-subscriber-area pb-30 mt-25">
-                                    <h6 class="text-capitalize f-700 mb-22">Subscribe Us</h6>
+                                    <h6 class="text-capitalize f-700 mb-22">Obuna bo'ling</h6>
                                     <div class="footer-subscribe">
-                                        <p>Fectetur adipisicing elit, sed do eius mod tempor</p>
+                                        <p>Eng so'nggi yangiliklar va ma'lumotlardan xabardor bo'ling</p>
                                         <form action="#">
                                             <div class="subscribe-info mt-22 position-relative">
-                                                <input class="sub-name form-control border-0 pl-20 pt-15 pb-15 pr-10 white-bg secondary-color rounded-0" type="email" name="email" id="email" placeholder="Submit email">
+                                                <input class="sub-name form-control border-0 pl-20 pt-15 pb-15 pr-10 white-bg secondary-color rounded-0" type="email" name="email" id="email" placeholder="Email manzil">
                                                 <span class="secondary-color d-inline-block position-absolute pointer"><i class="far fa-envelope"></i></span>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div><!-- /col -->
-                            <div class="col-xl-2 offset-xl-1  col-lg-2  col-md-3  col-sm-6 col-12">
+                            <div class="col-xl-2 offset-xl-1 col-lg-2 col-md-3 col-sm-6 col-12">
                                 <div class="footer-widget f-info pb-30 ml-40 pr-20 mt-25">
-                                    <h6 class="text-capitalize f-700 mb-22">Service</h6>
+                                    <h6 class="text-capitalize f-700 mb-22">Xizmatlar</h6>
                                     <ul class="footer-info">
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Development</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Investitsiya</a>
                                         </li>
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Maintanance</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Konsalting</a>
                                         </li>
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Consultancy</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Qo'llab-quvvatlash</a>
                                         </li>
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Design</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Rivojlantirish</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div><!-- /col -->
-                            <div class="col-xl-2  col-lg-2  col-md-3  col-sm-6 col-12">
+                            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-12">
                                 <div class="footer-widget f-info pb-30 ml-40 pr-20 mt-25">
-                                    <h6 class="text-capitalize f-700 mb-22">Help</h6>
+                                    <h6 class="text-capitalize f-700 mb-22">Yordam</h6>
                                     <ul class="footer-info">
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Documentation</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Hujjatlar</a>
                                         </li>
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Sitemap</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Sayt xaritasi</a>
                                         </li>
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Legal Advice</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Huquqiy maslahat</a>
                                         </li>
                                         <li>
-                                            <a href="about-us.html" class="position-relative d-inline-block mb-2">Support</a>
+                                            <a href="#" class="position-relative d-inline-block mb-2">Qo'llab-quvvatlash</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div><!-- /col -->
-                            <div class="col-xl-3  col-lg-4  col-md-6  col-sm-12 col-12 pr-xl-0">
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 pr-xl-0">
                                 <div class="footer-widget f-adress pb-40 mt-25">
-                                    <h6 class="text-capitalize f-700 mb-22">Get in Touch</h6>
+                                    <h6 class="text-capitalize f-700 mb-22">Bog'lanish</h6>
                                     <ul class="footer-address">
                                         <li class="d-flex align-items-start">
                                             <span class="f-icon mr-20 mt-1"><i class="fas fa-map-marker-alt"></i></span> 
                                             <div class="">
-                                                Samarqand viloyat, Urgut shahar, Navoi shoh ko’chasi, 104-uy<br>
+                                                Samarqand viloyat, Urgut shahar, Navoi shoh ko'chasi, 104-uy<br>
                                             </div>  
                                         </li>
                                         <li>
@@ -393,25 +482,28 @@
                     <div class="container">
                         <div class="copyright-area mt-20 pb-50">
                             <div class="row align-items-center">
-                                <div class="col-xl-6  col-lg-6  col-md-6  col-sm-12 col-12 mb-10">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-10">
                                     <div class="f-logo text-center text-md-left">
-                                        <img src="{% static 'assets/images/logo/logo.jpg' %}" alt="image">
+                                        <img src="{% static 'assets/images/logo/logo.jpg' %}" alt="UFEZ Logo">
                                     </div><!-- /f-logo -->
                                 </div><!-- /col -->
-                                <div class="col-xl-6  col-lg-6  col-md-6  col-sm-12 col-12 mb-10">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-10">
                                     <div class="phone-contact text-center text-md-right">
-                                        <a class="theme-color f-700" href="tell:+8801234567890"><span class="pr-1"><span class="d-inline-block"><i class="fas fa-phone-alt"></i></span></span> +998 66 483 11 08</a>
+                                        <a class="theme-color f-700" href="tel:+998664831108">
+                                            <span class="pr-1">
+                                                <span class="d-inline-block"><i class="fas fa-phone-alt"></i></span>
+                                            </span> +998 66 483 11 08
+                                        </a>
                                     </div>
                                 </div><!-- /col -->
                             </div><!-- /row -->
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-xl-6 col-lg-5 col-md-12 col-sm-12 col-12">
                                     <div class="copyright-text text-center">
-                                        <p>{{ currently_year }} Barcha huquqlar himoyalangan</p>
+                                        <p>{% now "Y" %} © Barcha huquqlar himoyalangan. UFEZ</p>
                                     </div>
                                 </div>
                             </div>
- 
                         </div><!-- /copyright-area -->
                     </div><!-- /container -->
                 </div>
@@ -441,5 +533,68 @@
         <script src="{% static 'assets/js/plugins.js' %}"></script>
         <script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
         <script src="{% static 'assets/js/main.js' %}"></script>
+        
+        <!-- Custom Menu Scripts -->
+        <script>
+            $(document).ready(function() {
+                // Header scroll effect
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 100) {
+                        $('#header-sticky').addClass('scrolled');
+                    } else {
+                        $('#header-sticky').removeClass('scrolled');
+                    }
+                });
+                
+                // Language selector enhancement
+                $('.header-lang-bx').on('change', function() {
+                    $(this).closest('form').submit();
+                });
+                
+                // Mobile menu functionality integration
+                $('.mobile-menu-toggle').on('click', function(e) {
+                    e.preventDefault();
+                    $('body').addClass('mobile-menu-visible');
+                    $('.side-mobile-menu').addClass('side-mobile-menu-active');
+                    $('.body-overlay').addClass('body-overlay-active');
+                });
+                
+                // Close mobile menu
+                $('.icon-clear, .body-overlay').on('click', function(e) {
+                    e.preventDefault();
+                    $('body').removeClass('mobile-menu-visible');
+                    $('.side-mobile-menu').removeClass('side-mobile-menu-active');
+                    $('.body-overlay').removeClass('body-overlay-active');
+                });
+                
+                // Dropdown menu enhancement
+                $('.main-menu__list > li.dropdown').hover(
+                    function() {
+                        $(this).find('> ul').stop(true, true).fadeIn(300);
+                    },
+                    function() {
+                        $(this).find('> ul').stop(true, true).fadeOut(200);
+                    }
+                );
+                
+                // Smooth scrolling for anchor links
+                $('a[href^="#"]').on('click', function(event) {
+                    var target = $(this.getAttribute('href'));
+                    if (target.length) {
+                        event.preventDefault();
+                        $('html, body').stop().animate({
+                            scrollTop: target.offset().top - 100
+                        }, 1000);
+                    }
+                });
+            });
+            
+            // Additional mobile menu toggle function for compatibility
+            function toggleMobileMenu() {
+                $('body').toggleClass('mobile-menu-visible');
+                $('.side-mobile-menu').toggleClass('side-mobile-menu-active');
+                $('.body-overlay').toggleClass('body-overlay-active');
+            }
+        </script>
     </body>
 </html>
